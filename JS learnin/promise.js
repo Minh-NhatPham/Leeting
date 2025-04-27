@@ -45,6 +45,32 @@ createContextAndDoc()
     console.log("--------");
   });
 
+/**
+ * comparing async await vs promise
+   const mockServiceThrow = () =>
+  new Promise((res, rej) => {
+    res("wtfbro");
+    //   throw new Error("unit test error message");
+  });
+
+const promise2 = Promise.resolve(
+  mockServiceThrow().then((log) => {
+    return log + "adu";
+  })
+).then((value) => {
+  return value + 1;
+});
+//   .then((value) => {
+//     console.log(value);
+//   });
+const testAysc = async () => {
+  const test1 = await mockServiceThrow();
+  const test2 = await promise2;
+  console.log("test21", test1, test2);
+  console.log("testwtf");
+};
+testAysc();
+   */
 //===========//===========//===========//===========//===========//===========//===========
 //
 const throwError = () => {
