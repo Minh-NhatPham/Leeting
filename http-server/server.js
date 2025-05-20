@@ -1,23 +1,24 @@
 // import * as net from "node:net";
 const net = require("node:net");
 
+const handleSoData = (data, socket) => {
+  // data: Buffer
+  console.log("data:", data);
+  socket.write(data); // echo back the data.
+
+  // actively closed the connection if the data contains 'q'
+  if (data.includes("q")) {
+    console.log("closing.");
+    socket.end(); // this will send FIN and close the connection.
+  }
+};
 const newConn = (socket) => {
   console.info("socket new", socket.remoteAddress);
   socket.on("end", () => {
     // FIN received. The connection will be closed automatically.
     console.log("EOF.");
   });
-  socket.on("data", (data) => {
-    // data: Buffer
-    console.log("data:", data);
-    socket.write(data); // echo back the data.
-
-    // actively closed the connection if the data contains 'q'
-    if (data.includes("q")) {
-      console.log("closing.");
-      socket.end(); // this will send FIN and close the connection.
-    }
-  });
+  socket.on("data", (data) => handleSoData(data, socket));
 };
 
 const server = net.createServer();
