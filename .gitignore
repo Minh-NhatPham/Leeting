@@ -1,2 +1,5 @@
 # kata-machine
-*.js
+DSA/*.js
+
+*-lock.*
+node_modules
