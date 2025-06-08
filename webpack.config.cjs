@@ -9,13 +9,16 @@ module.exports = {
   mode: "production", // Change to 'production' for tree shaking
   optimization: {
     sideEffects: false,
-    minimize: false,
+    minimize: false, //true to remove unused local variables
     minimizer: [
       new TerserPlugin({
         test: /\.js(\?.*)?$/i,
       }),
     ],
     usedExports: true, // Enable tree shaking
+  },
+  stats: {
+    usedExports: true, // Hiển thị thông tin tree shaking
   },
   resolve: {
     extensions: [".js", ".cjs", ".mjs"],

@@ -1,0 +1,18 @@
+{
+  "ts-node": {
+    "esm": true,
+    "transpileOnly": false
+  },
+  "include": ["TS/**/*.ts", "TS/*.ts"],
+  "compilerOptions": {
+    "module": "ESNext", // ✅ ESM output
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "outDir": "./dist-ts",
+    "target": "es2020",
+    "declaration": true
+  },
+  "allowUnreachableCode": false
+}

@@ -1,5 +1,6 @@
 # kata-machine
 DSA/*.js
-
+TS/*.js
+dist-ts
 *-lock.*
 node_modules
