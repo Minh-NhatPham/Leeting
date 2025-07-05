@@ -13,8 +13,8 @@ class Solution {
       let temp = num + 1;
       let count = 1;
       while (map.has(temp)) {
-        temp = temp + 1;
-        count = count + 1;
+        temp++;
+        count++;
       }
       longest = Math.max(longest, count);
     }
