@@ -33,6 +33,32 @@ class Solution {
     }
     return Array.from(result.values());
   }
+
+  betterThreeSome(nums) {
+    if (nums.length < 3) return [];
+    nums.sort((a, b) => a - b);
+    const result = [];
+    for (let i = 0; i < nums.length - 2; i++) {
+      if (i > 0 && nums[i] === nums[i - 1]) continue; // Skip duplicates for i
+      let l = i + 1;
+      let r = nums.length - 1;
+      while (l < r) {
+        const sum = nums[i] + nums[l] + nums[r];
+        if (sum === 0) {
+          result.push([nums[i], nums[l], nums[r]]);
+          while (l < r && nums[l] === nums[l + 1]) l++; // Skip duplicates for l
+          while (l < r && nums[r] === nums[r - 1]) r--; // Skip duplicates for r
+          l++;
+          r--;
+        } else if (sum < 0) {
+          l++;
+        } else {
+          r--;
+        }
+      }
+    }
+    return result;
+  }
 }
 
 console.log("asdasdasd", new Solution().threeSum([-2, -1, 0, 1, 2, 3]));
